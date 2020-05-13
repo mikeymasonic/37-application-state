@@ -2,14 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Controls.css';
 
-const Controls = ({ children }) => (
+const Controls = ({ actions }) => (
   <section className={styles.Controls}>
-    {children}
+    {actions.map((obj, i) => {
+      return <button key={i} onClick={obj.actionCreator}>{obj.name} - {obj.count}</button>;
+    })}
   </section>
 );
 
 Controls.propTypes = {
-  children: PropTypes.node
+  actions: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    text: PropTypes.string
+  })).isRequired,
+  handleSelection: PropTypes.func
 };
 
 export default Controls;
