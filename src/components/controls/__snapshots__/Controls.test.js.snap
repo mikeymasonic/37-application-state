@@ -3,5 +3,18 @@
 exports[`Controls component renders Controls 1`] = `
 <section
   className="Controls"
-/>
+>
+  <button
+    key="0"
+  >
+    DO_STUFF
+     - 
+  </button>
+  <button
+    key="1"
+  >
+    other
+     - 
+  </button>
+</section>
 `;

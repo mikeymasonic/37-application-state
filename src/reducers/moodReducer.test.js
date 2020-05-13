@@ -9,7 +9,7 @@ describe('mood reducer', () => {
 
     expect(newState).toEqual({ coffees: 1 });
   });
-  
+
   it('handles EAT_SNACK', () => {
     const action = eatSnack();
     const initialState = { snacks: 2 };
@@ -28,9 +28,9 @@ describe('mood reducer', () => {
 
   it('handles STUDY', () => {
     const action = study();
-    const initialState = { study: 314 };
+    const initialState = { studies: 314 };
     const newState = reducer(initialState, action);
 
-    expect(newState).toEqual({ study: 315 });
+    expect(newState).toEqual({ studies: 315 });
   });
 });
