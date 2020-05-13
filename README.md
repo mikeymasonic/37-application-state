@@ -1,85 +1,43 @@
-# Redux Middleware and Hooks
+# LAB - Application State
 
-## Agenda
+For this assignment, you will be refactoring an app that uses basic
+state management into one that uses Redux for state management.
 
-* Redux Middleware
-* Redux Hooks
+## Before you begin
+Refer to *Getting Started*  in the [lab submission instructions](../../../reference/submission-instructions/labs/README.md) for complete setup, configuration, deployment, and submission instructions.
 
-## Resources
+## Getting Started
 
-* [Middleware](https://redux.js.org/advanced/middleware)
-* [Compose](https://redux.js.org/api/compose)
+### Connect to a store
 
-## Redux Middleware
+For this assignment, you're going to take an existing application which
+changes a face based based on button clicks.
 
-### Why?
+* You've been provided starter code to work with
+* Connect `index.js` to the redux store and pass it down to the `App` component
+* Remove the state declaration in the container
+* extract code from `Moods.js` into the appropriate files
+  * create actions, selectors, and reducers
+* use the `useSelector` and `useDispatch` hooks connect redux
+* Export the connected `Moods` container
 
-Redux middleware are functions that sit between a dispatched action
-and the reducers. They allow us to customize behavior based on the
-action. They also allow us to customize behavior after the reducers
-finish.
+### Create a new reducer
 
-For example:
+In this assignment, we have a working app that uses Redux for it's state
+management. Now, it's time to extend it.
 
-* we can log every action that redux handles
-* we can wait for asynchronous actions
-* we can store state in local storage
+When the page first loads there should be a start button. Upon clicking
+the start button your `Moods` container should display. There should be
+a timer under the face emoji. When the timer elapses the game should
+reset (all state goes back to 0) and you should be sent to the initial
+view.
 
-### What?
+###### Stretch Goals:
 
-Redux middleware takes the form
+* Add more moods
+* Use combine reducer to extract all your timer state from
+  your button click state
 
-```js
-const myMiddleware = store => next => action => {
-  // ...do stuff here
-}
-```
+### Assignment Submission Instructions
 
-parameter | description
---------- | -----------
-`store`   | the redux store with all of its methods
-`next`    | a function to move to the next middleware (returns new state)
-`action`  | the incoming (dispatched) action
-
-Middleware can be applied when you create your store:
-
-```js
-import {
-  createStore,
-  applyMiddleware
-} from 'redux';
-import reducer from './reducers';
-import { myMiddleware } from './middleware/myMiddleware.js';
-
-export default createStore(
-  reducer,
-  applyMiddleware(
-    myMiddleware
-  )
-);
-```
-
-### Compose
-
-When we applied middleware before we applied a store enhancer. Middleware
-isn't a fundamental part of redux, but is added as an enhancement. We've
-used another redux enhancement when we used redux devtools.
-
-To add multiple enhancements we need to `compose` the enhancements together.
-
-```js
-import {
-  createStore,
-  applyMiddleware,
-  compose
-} from 'redux';
-import reducer from './reducers';
-import { myMiddleware } from './middleware/myMiddleware.js';
-
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-export default createStore(
-  reducer,
-  composeEnhancers(applyMiddleware(myMiddleware))
-);
-```
+Refer to the the [lab submission instructions](../../../reference/submission-instructions/labs/README.md) for the complete lab submission process and expectations

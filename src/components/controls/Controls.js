@@ -14,7 +14,7 @@ Controls.propTypes = {
   actions: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
     text: PropTypes.string
-  })).isRequired,
+  })),
   handleSelection: PropTypes.func
 };
 
