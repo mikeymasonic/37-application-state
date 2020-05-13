@@ -4,7 +4,7 @@ const initialState = {
   coffees: 0,
   snacks: 0,
   naps: 0,
-  study: 0 
+  studies: 0 
 };
 
 export default function reducer(state = initialState, action) {
@@ -16,7 +16,7 @@ export default function reducer(state = initialState, action) {
     case TAKE_NAP:
       return { ...state, naps: state.naps + 1 };
     case STUDY:
-      return { ...state, study: state.study + 1 };
+      return { ...state, studies: state.studies + 1 };
     default:
       return state;
   }
